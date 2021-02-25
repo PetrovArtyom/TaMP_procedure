@@ -23,7 +23,6 @@ namespace simple_wisdom {
 		case 2:
 			wd = new wisdom;
 			wd->k = wisdom::key::APHORISM;
-			//ifst >> wd > content;
 			ifst.getline(wd->content, 200);
 			In(wd->aph, ifst);
 			return wd;
@@ -32,21 +31,45 @@ namespace simple_wisdom {
 		}
 	}
 
+	int marks_number(wisdom w)         //   Вычисление количества знаков препинания
+	{
+		int marks_num = 0;
+		char marks[] = { '.', ',', '!', '?', '-', ';', ':' };
+		int marks_len = 7;
+
+		for (int i = 0; i < strlen(w.content); i++)
+		{
+			for (int j = 0; j < 7; j++)
+			{
+				if (w.content[i] == marks[j])
+				{
+					marks_num++;
+				}
+			}
+		}
+
+		return marks_num;
+	}
+
 	// Сигнатуры требуемых внешних функций.
 	void Out(proverb& pr, ofstream& ofst);
 	void Out(aphorism& aph, ofstream& ofst);
 	// Вывод параметров текущей фигуры в поток
 	void Out(wisdom& wd, ofstream& ofst)
 	{
+		int marks_num = marks_number(wd);
+
 		switch (wd.k)
 		{
 		case wisdom::key::PROVERB:
 			ofst << "Пословица: " << wd.content << endl;
 			Out(wd.pr, ofst);
+			ofst << "Знаков препинания: " << marks_num << endl << endl;
 			break;
 		case wisdom::key::APHORISM:
 			ofst << "Афоризм: " << wd.content << endl;
 			Out(wd.aph, ofst);
+			ofst << "Знаков препинания: " << marks_num << endl << endl;
 			break;
 		default:
 			ofst << "Некорректная фраза!" << endl;
