@@ -34,7 +34,7 @@ int main(int argc, char* argv[])
 	cout << "Контейнер заполнен" << endl << endl;
 	Out(c, ofst);
 	Clear(c);
-	ofst << endl << "Контейнер пуст" << endl << endl;
+	ofst << "Контейнер пуст" << endl << endl;
 	cout << "Контейнер пуст" << endl << endl;
 	Out(c, ofst);
 	cout << "Конец выполнения программы" << endl;

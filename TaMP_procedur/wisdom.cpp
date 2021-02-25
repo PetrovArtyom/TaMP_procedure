@@ -47,8 +47,6 @@ namespace simple_wisdom
 			Out(wd.pr, ofst);
 			break;
 		case wisdom::key::APHORISM:
-			ofst << "Афоризм: " << wd.content << endl;
-			Out(wd.aph, ofst);
 			break;
 		default:
 			ofst << "Некорректная фраза!" << endl;
