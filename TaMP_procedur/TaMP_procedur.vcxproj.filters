@@ -30,6 +30,9 @@
     <ClCompile Include="wisdom.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="riddle.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="aphorism_atd.h">
@@ -42,6 +45,9 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="wisdom_atd.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="riddle_atd.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
