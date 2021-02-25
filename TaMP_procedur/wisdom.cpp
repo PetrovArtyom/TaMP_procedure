@@ -1,10 +1,12 @@
 #include <fstream>
 #include "wisdom_atd.h"
 using namespace std;
-namespace simple_wisdom {
+namespace simple_wisdom 
+{
 	// Сигнатуры требуемых внешних функций
 	void In(proverb& pr, ifstream& ist);
 	void In(aphorism& aph, ifstream& ist);
+
 	// Ввод параметров обобщенной фразы из файла
 	wisdom* In(ifstream& ifst)
 	{
@@ -23,7 +25,6 @@ namespace simple_wisdom {
 		case 2:
 			wd = new wisdom;
 			wd->k = wisdom::key::APHORISM;
-			//ifst >> wd > content;
 			ifst.getline(wd->content, 200);
 			In(wd->aph, ifst);
 			return wd;
@@ -35,7 +36,8 @@ namespace simple_wisdom {
 	// Сигнатуры требуемых внешних функций.
 	void Out(proverb& pr, ofstream& ofst);
 	void Out(aphorism& aph, ofstream& ofst);
-	// Вывод параметров текущей фигуры в поток
+
+	// Вывод параметров текущей мудрости в поток
 	void Out(wisdom& wd, ofstream& ofst)
 	{
 		switch (wd.k)
