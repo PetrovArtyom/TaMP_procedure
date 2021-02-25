@@ -1,6 +1,7 @@
 ﻿// TaMP_procedur.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
 //
 
+#include <ctime>
 #include <windows.h>
 #include <iostream>
 #include <fstream>
@@ -17,6 +18,7 @@ namespace simple_wisdom {
 using namespace simple_wisdom;
 int main(int argc, char* argv[])
 {
+	srand(time(NULL));
 	setlocale(LC_ALL, "rus");
 
 	if (argc != 3) {

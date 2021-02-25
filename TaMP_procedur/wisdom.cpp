@@ -20,12 +20,14 @@ namespace simple_wisdom
 			wd = new wisdom;
 			wd->k = wisdom::key::PROVERB;
 			ifst.getline(wd->content, 200);
+			wd->mark = rand() % 10;
 			In(wd->pr, ifst);
 			return wd;
 		case 2:
 			wd = new wisdom;
 			wd->k = wisdom::key::APHORISM;
 			ifst.getline(wd->content, 200);
+			wd->mark = rand() % 10;
 			In(wd->aph, ifst);
 			return wd;
 		default:
@@ -45,10 +47,12 @@ namespace simple_wisdom
 		case wisdom::key::PROVERB:
 			ofst << "Пословица: " << wd.content << endl;
 			Out(wd.pr, ofst);
+			ofst << "Оценка: " << wd.mark << endl << endl;
 			break;
 		case wisdom::key::APHORISM:
 			ofst << "Афоризм: " << wd.content << endl;
 			Out(wd.aph, ofst);
+			ofst << "Оценка: " << wd.mark << endl << endl;
 			break;
 		default:
 			ofst << "Некорректная фраза!" << endl;

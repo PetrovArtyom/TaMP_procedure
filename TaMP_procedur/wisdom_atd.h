@@ -8,6 +8,8 @@ namespace simple_wisdom {
 	struct wisdom
 	{
 		char content[200];       // Содержание
+		int mark = 0;            // Субъективная оценка
+
 		// значения ключей для каждой из фразы
 		enum key { PROVERB, APHORISM };
 		key k; // ключ
