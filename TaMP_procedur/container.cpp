@@ -58,21 +58,4 @@ namespace simple_wisdom {
 			Out(*(c.cont[i]), ofst);
 		}
 	}
-
-	void Sort(container& c)                          //сортировка методом пузырька
-	{
-		for (int i = 0; i < c.len - 1; i++)
-		{
-			for (int j = i + 1; j < c.len; j++)
-			{
-				if ( marks_number(*(c.cont[i])) > marks_number(*(c.cont[j])))
-				{
-					wisdom* tmp = c.cont[i];
-					c.cont[i] = c.cont[j];
-					c.cont[j] = tmp;
-					tmp = NULL;
-				}
-			}
-		}
-	}
 }
