@@ -45,7 +45,6 @@ namespace simple_wisdom {
 
 	// Сигнатуры требуемых внешних функций
 	void Out(wisdom& wd, ofstream& ofst);
-	void swap(wisdom& a, wisdom& b);
 	int marks_number(wisdom w);
 
 	// Вывод содержимого контейнера в указанный поток
@@ -60,18 +59,20 @@ namespace simple_wisdom {
 		}
 	}
 
-	void Sort(container& c)
+	void Sort(container& c)                          //сортировка методом пузырька
 	{
-		bool changed_were = false;
-		do
+		for (int i = 0; i < c.len - 1; i++)
 		{
-			for (int i = 0; i < c.len - 1; i++)
+			for (int j = i + 1; j < c.len; j++)
 			{
-				if ( marks_number(*(c.cont[i])) > marks_number(*(c.cont[i + 1])))
+				if ( marks_number(*(c.cont[i])) > marks_number(*(c.cont[j])))
 				{
-					swap(*(c.cont[i]), *(c.cont[i + 1]));
+					wisdom* tmp = c.cont[i];
+					c.cont[i] = c.cont[j];
+					c.cont[j] = tmp;
+					tmp = NULL;
 				}
 			}
-		} while (changed_were);
+		}
 	}
 }

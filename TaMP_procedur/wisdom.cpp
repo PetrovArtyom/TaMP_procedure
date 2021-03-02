@@ -51,33 +51,6 @@ namespace simple_wisdom {
 		return marks_num;
 	}
 
-	void swap(wisdom& a, wisdom& b)      // Функция замены одного элемента на другой 
-	{
-		wisdom* tmp = new wisdom;
-		tmp->k = a.k;
-
-		for (int i = 0; i < strlen(a.content) + 1; i++)
-		{
-			tmp->content[i] = a.content[i];
-		}
-
-		a.k = b.k;
-
-		for (int i = 0; i < strlen(b.content) + 1; i++)
-		{
-			a.content[i] = b.content[i];
-		}
-
-		b.k = tmp->k;
-
-		for (int i = 0; i < strlen(tmp->content) + 1; i++)
-		{
-			b.content[i] = tmp->content[i];
-		}
-
-		tmp = NULL;
-	}
-
 	// Сигнатуры требуемых внешних функций.
 	void Out(proverb& pr, ofstream& ofst);
 	void Out(aphorism& aph, ofstream& ofst);
