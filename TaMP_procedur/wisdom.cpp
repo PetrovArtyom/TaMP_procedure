@@ -10,24 +10,27 @@ namespace simple_wisdom
 	// Ввод параметров обобщенной фразы из файла
 	wisdom* In(ifstream& ifst)
 	{
-		wisdom* wd;
+		// Считывание вида мудрости
 		int k;
 		ifst >> k;
 		char tmp;
 		ifst.get(tmp);
+
+		// Ввод общих параметров 
+		wisdom* wd = new wisdom;
+		ifst.getline(wd->content, 200);
+		int k2;
+		ifst >> k2;
+		ifst.get(tmp);
+		wd->mark = k2;
+
 		switch (k) {
 		case 1:
-			wd = new wisdom;
 			wd->k = wisdom::key::PROVERB;
-			ifst.getline(wd->content, 200);
-			wd->mark = rand() % 10;
 			In(wd->pr, ifst);
 			return wd;
 		case 2:
-			wd = new wisdom;
 			wd->k = wisdom::key::APHORISM;
-			ifst.getline(wd->content, 200);
-			wd->mark = rand() % 10;
 			In(wd->aph, ifst);
 			return wd;
 		default:
@@ -42,20 +45,20 @@ namespace simple_wisdom
 	// Вывод параметров текущей мудрости в поток
 	void Out(wisdom& wd, ofstream& ofst)
 	{
+		// Вывод индивидуальных параметров
 		switch (wd.k)
 		{
 		case wisdom::key::PROVERB:
-			ofst << "Пословица: " << wd.content << endl;
 			Out(wd.pr, ofst);
-			ofst << "Оценка: " << wd.mark << endl << endl;
 			break;
 		case wisdom::key::APHORISM:
-			ofst << "Афоризм: " << wd.content << endl;
 			Out(wd.aph, ofst);
-			ofst << "Оценка: " << wd.mark << endl << endl;
 			break;
 		default:
 			ofst << "Некорректная фраза!" << endl;
 		}
+
+		// Вывод общих параметров
+		ofst << wd.content << endl << "Оценка: " << wd.mark << endl << endl;
 	}
 }

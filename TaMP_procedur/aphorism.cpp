@@ -11,6 +11,6 @@ namespace simple_wisdom {
 	// Вывод строк афоризма в поток
 	void Out(aphorism& aph, ofstream& ofst)
 	{
-		ofst << "Автор: " << aph.author << endl;
+		ofst << "Автор: " << aph.author << endl << "Афоризм: ";
 	}
 }
