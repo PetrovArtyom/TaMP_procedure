@@ -52,4 +52,20 @@ namespace simple_wisdom
 			ofst << "Некорректная фраза!" << endl;
 		}
 	}
+
+	// Фильтрованный вывод параметров текущей мудрости в поток
+	void Out_proverb(wisdom& wd, ofstream& ofst)
+	{
+		switch (wd.k)
+		{
+		case wisdom::key::PROVERB:
+			ofst << "Пословица: " << wd.content << endl;
+			Out(wd.pr, ofst);
+			break;
+		case wisdom::key::APHORISM:
+			break;
+		default:
+			ofst << "Некорректная фраза!" << endl;
+		}
+	}
 }

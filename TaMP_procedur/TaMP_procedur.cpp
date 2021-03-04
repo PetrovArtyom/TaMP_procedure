@@ -12,6 +12,7 @@ namespace simple_wisdom {
 	void Clear(container& c);
 	void In(container& c, ifstream& ifst);
 	void Out(container& c, ofstream& ofst);
+	void Out_proverb(container& c, ofstream& ofst);
 }
 
 using namespace simple_wisdom;
@@ -32,7 +33,7 @@ int main(int argc, char* argv[])
 	In(c, ifst);
 	ofst << "Контейнер заполнен" << endl << endl;
 	cout << "Контейнер заполнен" << endl << endl;
-	Out(c, ofst);
+	Out_proverb(c, ofst);
 	Clear(c);
 	ofst << "Контейнер пуст" << endl << endl;
 	cout << "Контейнер пуст" << endl << endl;
