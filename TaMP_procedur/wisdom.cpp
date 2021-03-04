@@ -76,4 +76,9 @@ namespace simple_wisdom {
 			ofst << "Некорректная фраза!" << endl;
 		}
 	}
+
+	bool compare(wisdom a, wisdom b)
+	{
+		return marks_number(a) > marks_number(b);
+	}
 }

@@ -46,6 +46,7 @@ namespace simple_wisdom {
 	// Сигнатуры требуемых внешних функций
 	void Out(wisdom& wd, ofstream& ofst);
 	int marks_number(wisdom w);
+	bool compare(wisdom a, wisdom b);
 
 	// Вывод содержимого контейнера в указанный поток
 	void Out(container& c, ofstream& ofst)
@@ -65,7 +66,7 @@ namespace simple_wisdom {
 		{
 			for (int j = i + 1; j < c.len; j++)
 			{
-				if (marks_number(*(c.cont[i])) > marks_number(*(c.cont[j])))
+				if(compare(*(c.cont[i]), *(c.cont[j])))
 				{
 					wisdom* tmp = c.cont[i];
 					c.cont[i] = c.cont[j];
