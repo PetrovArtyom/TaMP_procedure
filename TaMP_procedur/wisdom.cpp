@@ -44,6 +44,26 @@ namespace simple_wisdom
 		}
 	}
 
+	int marks_number(wisdom w)         //   Вычисление количества знаков препинания
+	{
+		int marks_num = 0;
+		char marks[] = { '.', ',', '!', '?', '-', ';', ':' };
+		int marks_len = 7;
+
+		for (int i = 0; i < strlen(w.content); i++)
+		{
+			for (int j = 0; j < 7; j++)
+			{
+				if (w.content[i] == marks[j])
+				{
+					marks_num++;
+				}
+			}
+		}
+
+		return marks_num;
+	}
+
 	// Сигнатуры требуемых внешних функций.
 	void Out(proverb& pr, ofstream& ofst);
 	void Out(aphorism& aph, ofstream& ofst);
@@ -52,6 +72,8 @@ namespace simple_wisdom
 	// Вывод параметров текущей мудрости в поток
 	void Out(wisdom& wd, ofstream& ofst)
 	{
+		int marks_num = marks_number(wd);
+
 		// Вывод индивидуальных параметров
 		switch (wd.k)
 		{
@@ -69,6 +91,7 @@ namespace simple_wisdom
 		}
 
 		// Вывод общих параметров
-		ofst << wd.content << endl << "Оценка: " << wd.mark << endl << endl;
+		ofst << wd.content << endl << "Оценка: " << wd.mark << endl;
+		ofst << "Знаков препинания: " << marks_num << endl << endl;
 	}
 }

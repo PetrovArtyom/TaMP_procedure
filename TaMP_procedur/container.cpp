@@ -45,6 +45,8 @@ namespace simple_wisdom {
 
 	// Сигнатуры требуемых внешних функций
 	void Out(wisdom& wd, ofstream& ofst);
+	int marks_number(wisdom w);
+
 	// Вывод содержимого контейнера в указанный поток
 	void Out(container& c, ofstream& ofst)
 	{
