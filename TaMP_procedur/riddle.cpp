@@ -11,6 +11,6 @@ namespace simple_wisdom {
 	// Вывод параметров пословицы в поток
 	void Out(riddle& rd, ofstream& ofst)
 	{
-		ofst << "Ответ: " << rd.answer << endl << endl;
+		ofst << "Ответ: " << rd.answer << endl << "Загадка: ";
 	}
 }

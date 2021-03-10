@@ -11,6 +11,6 @@ namespace simple_wisdom {
 	// Вывод параметров пословицы в поток
 	void Out(proverb& pr, ofstream& ofst)
 	{
-		ofst << "Страна: " << pr.country << endl << endl;
+		ofst << "Страна: " << pr.country << endl << "Пословица: ";
 	}
 }
