@@ -94,4 +94,9 @@ namespace simple_wisdom
 		ofst << wd.content << endl << "Оценка: " << wd.mark << endl;
 		ofst << "Знаков препинания: " << marks_num << endl << endl;
 	}
+
+	bool compare(wisdom a, wisdom b)
+	{
+		return marks_number(a) > marks_number(b);
+	}
 }
