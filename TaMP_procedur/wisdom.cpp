@@ -95,6 +95,33 @@ namespace simple_wisdom
 		ofst << "Знаков препинания: " << marks_num << endl << endl;
 	}
 
+	// Фильтрованный вывод параметров текущей мудрости в поток
+	void Out_proverb(wisdom& wd, ofstream& ofst)
+	{
+		int marks_num = marks_number(wd);
+
+		// Вывод индивидуальных параметров
+		switch (wd.k)
+		{
+		case wisdom::key::PROVERB:
+			Out(wd.pr, ofst);
+			break;
+		case wisdom::key::APHORISM:
+			break;
+		case wisdom::key::RIDDLE:
+			break;
+		default:
+			ofst << "Некорректная фраза!" << endl;
+		}
+
+		// Вывод общих параметров
+		if (wd.k == wisdom::key::PROVERB)
+		{
+			ofst << wd.content << endl << "Оценка: " << wd.mark << endl;
+			ofst << "Знаков препинания: " << marks_num << endl << endl;
+		}
+	}
+
 	bool compare(wisdom a, wisdom b)
 	{
 		return marks_number(a) > marks_number(b);

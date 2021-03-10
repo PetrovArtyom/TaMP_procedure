@@ -1,7 +1,8 @@
 #include <fstream>
 #include "proverb_atd.h"
 using namespace std;
-namespace simple_wisdom {
+namespace simple_wisdom 
+{
 	// ¬вод параметров пословицы из файла
 	void In(proverb& pr, ifstream& ifst)
 	{

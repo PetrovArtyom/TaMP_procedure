@@ -1,7 +1,8 @@
 #include <fstream>
 #include "aphorism_atd.h"
 using namespace std;
-namespace simple_wisdom {
+namespace simple_wisdom 
+{
 	// Ввод строк афоризма из потока
 	void In(aphorism& aph, ifstream& ifst)
 	{

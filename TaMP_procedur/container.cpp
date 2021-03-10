@@ -45,6 +45,8 @@ namespace simple_wisdom {
 
 	// Сигнатуры требуемых внешних функций
 	void Out(wisdom& wd, ofstream& ofst);
+	void Out_proverb(wisdom& wd, ofstream& ofst);
+
 	int marks_number(wisdom w);
 	bool compare(wisdom a, wisdom b);
 
@@ -55,8 +57,18 @@ namespace simple_wisdom {
 		cout << "Количество элементов в контейнере: " << c.len << endl << endl;
 		for (int i = 0; i < c.len; i++)
 		{
-			ofst << i + 1 << ": ";
 			Out(*(c.cont[i]), ofst);
+		}
+	}
+
+	// Фильтрованный вывод содержимого контейнера в указанный поток
+	void Out_proverb(container& c, ofstream& ofst)
+	{
+		ofst << "Количество элементов в контейнере: " << c.len << endl << endl;
+		cout << "Количество элементов в контейнере: " << c.len << endl << endl;
+		for (int i = 0; i < c.len; i++)
+		{
+			Out_proverb(*(c.cont[i]), ofst);
 		}
 	}
 

@@ -1,7 +1,8 @@
 #include <fstream>
 #include "riddle_atd.h"
 using namespace std;
-namespace simple_wisdom {
+namespace simple_wisdom 
+{
 	// ¬вод параметров загадки из файла
 	void In(riddle& rd, ifstream& ifst)
 	{

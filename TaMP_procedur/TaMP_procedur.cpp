@@ -13,6 +13,7 @@ namespace simple_wisdom {
 	void Clear(container& c);
 	void In(container& c, ifstream& ifst);
 	void Out(container& c, ofstream& ofst);
+	void Out_proverb(container& c, ofstream& ofst);
 	void Sort(container& c);
 }
 
@@ -38,9 +39,9 @@ int main(int argc, char* argv[])
 	Sort(c);
 	ofst << "Контейнер отсортирован" << endl << endl;
 	cout << "Контейнер отсортирован" << endl << endl;
-	Out(c, ofst);
+	Out_proverb(c, ofst);
 	Clear(c);
-	ofst << endl << "Контейнер пуст" << endl << endl;
+	ofst << "Контейнер пуст" << endl << endl;
 	cout << "Контейнер пуст" << endl << endl;
 	Out(c, ofst);
 	cout << "Конец выполнения программы" << endl;
