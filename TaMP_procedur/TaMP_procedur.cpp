@@ -36,9 +36,17 @@ int main(int argc, char* argv[])
 	In(c, ifst);
 	ofst << "Контейнер заполнен" << endl << endl;
 	cout << "Контейнер заполнен" << endl << endl;
+	ofst << "Стандартный вывод" << endl << endl;
+	cout << "Стандартный вывод" << endl << endl;
+	Out(c, ofst);
 	Sort(c);
 	ofst << "Контейнер отсортирован" << endl << endl;
 	cout << "Контейнер отсортирован" << endl << endl;
+	ofst << "Отсортированный вывод" << endl << endl;
+	cout << "Отсортированный вывод" << endl << endl;
+	Out(c, ofst);
+	ofst << "Фильтрованный вывод" << endl << endl;
+	cout << "Фильтрованный вывод" << endl << endl;
 	Out_proverb(c, ofst);
 	Clear(c);
 	ofst << "Контейнер пуст" << endl << endl;
