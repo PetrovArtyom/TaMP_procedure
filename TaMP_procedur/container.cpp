@@ -46,7 +46,6 @@ namespace simple_wisdom {
 	// Сигнатуры требуемых внешних функций
 	void Out(wisdom& wd, ofstream& ofst);
 	void Out_proverb(wisdom& wd, ofstream& ofst);
-
 	int marks_number(wisdom w);
 	bool compare(wisdom a, wisdom b);
 
@@ -88,5 +87,4 @@ namespace simple_wisdom {
 			}
 		}
 	}
-
 }
