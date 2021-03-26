@@ -7,7 +7,8 @@
 #include <fstream>
 #include "container_atd.h"
 using namespace std;
-namespace simple_wisdom {
+namespace simple_wisdom 
+{
 	// Сигнатуры требуемых внешних функций
 	void Init(container& c);
 	void Clear(container& c);

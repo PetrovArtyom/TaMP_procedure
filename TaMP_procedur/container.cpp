@@ -4,7 +4,8 @@
 #include <iostream>
 
 using namespace std;
-namespace simple_wisdom {
+namespace simple_wisdom 
+{
 	// Инициализация контейнера
 	void Init(container& c)
 	{
@@ -39,6 +40,7 @@ namespace simple_wisdom {
 			{
 				cout << "Массив переполнен. Считано " << c.max_len << " элементов." << endl;
 				ifst.close();
+				break;
 			}
 		}
 	}
