@@ -45,11 +45,6 @@ namespace TaMPProcedureTests
 			std::ifstream ifstr2("cont_in_2.txt");						// Читаем норму - 3 элемента
 			std::ifstream ifstr3("cont_in_3.txt");						// Читаем переполнение - 105 элементов
 
-			if (ifstr1.is_open() && ifstr2.is_open() && ifstr3.is_open())
-			{
-				int p = 4;
-			}
-
 			simple_wisdom::container c1;
 			simple_wisdom::container c2;
 			simple_wisdom::container c3;
