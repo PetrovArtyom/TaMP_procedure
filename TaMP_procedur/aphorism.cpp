@@ -1,12 +1,19 @@
 #include <fstream>
+#include <iostream>
 #include "aphorism_atd.h"
 using namespace std;
 namespace simple_wisdom 
 {
 	// Ввод строк афоризма из потока
-	void In(aphorism& aph, ifstream& ifst)
+	int In(aphorism& aph, ifstream& ifst)
 	{
 		ifst.getline(aph.author, 50);
+		if (aph.author[0] == '\0')
+		{
+			cout << endl << "Error! Incorrect input of wisdom type. Please check input file." << endl;
+			return 1;
+		}
+		return 0;
 	}
 
 	// Вывод строк афоризма в поток

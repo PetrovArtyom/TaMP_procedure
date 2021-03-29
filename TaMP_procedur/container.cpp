@@ -25,7 +25,7 @@ namespace simple_wisdom
 	// Сигнатуры требуемых внешних функций
 	wisdom* In(ifstream& ifdt);
 	// Ввод содержимого контейнера из указанного потока
-	void In(container& c, ifstream& ifst)
+	int In(container& c, ifstream& ifst)
 	{
 		while (!ifst.eof())
 		{
@@ -35,6 +35,10 @@ namespace simple_wisdom
 				{
 					c.len++;
 				}
+				else
+				{
+					return 1;
+				}
 			}
 			else
 			{
@@ -43,6 +47,7 @@ namespace simple_wisdom
 				break;
 			}
 		}
+		return 0;
 	}
 
 	// Сигнатуры требуемых внешних функций

@@ -1,43 +1,97 @@
 #include <fstream>
+#include <iostream>
 #include "wisdom_atd.h"
 using namespace std;
 namespace simple_wisdom 
 {
 	// Сигнатуры требуемых внешних функций
-	void In(proverb& pr, ifstream& ist);
-	void In(aphorism& aph, ifstream& ist);
-	void In(riddle& rd, ifstream& ist);
+	int In(proverb& pr, ifstream& ist);
+	int In(aphorism& aph, ifstream& ist);
+	int In(riddle& rd, ifstream& ist);
 
-	// Ввод параметров обобщенной фразы из файла
+	// Ввод параметров обобщенной мудрости из файла
 	wisdom* In(ifstream& ifst)
 	{
 		// Считывание вида мудрости
-		int k;
+		char k;
 		ifst >> k;
+
+		// Проверка символа на принадлежность к цифрам
+		if ((int)k > 57 || (int)k < 48)			
+		{
+			cout << endl << "Error! Incorrect input of wisdom type. Please check input file." << endl;
+			return 0;
+		}
+
+		// Конвертирование char в int
+		int wd_type = (int)k - 48;
+
+		// Считывание оставшегося символа \n
 		char tmp;
 		ifst.get(tmp);
 
-		// Ввод общих параметров 
+		// Ввод первого общего параметра мудрости - содержания
 		wisdom* wd = new wisdom;
 		ifst.getline(wd->content, 200);
-		int k2;
-		ifst >> k2;
-		ifst.get(tmp);
-		wd->mark = k2;
 
-		switch (k) 
+		//Проверка непустоты строки
+		if (wd->content[0] == '\0')
+		{
+			cout << endl << "Error! Incorrect input of wisdom type. Please check input file." << endl;
+			return 0;
+		}
+
+		// Ввод второго общего параметра мудрости - оценки
+		char str[4];
+		ifst.getline(str, 4);
+
+		// Проверка того, что оценка является числом
+		int count = 0;
+		while (str[count] != '\n' && str[count] != '\0' && count < 4)
+		{
+			if ((int)str[count] > 57 || (int)str[count] < 48)
+			{
+				cout << endl << "Error! Incorrect input of wisdom type. Please check input file." << endl;
+				return 0;
+			}
+			count++;
+		}
+
+		// Проверка на невведение второго общего параметра - оценки
+		if (count == 0)
+		{
+			cout << endl << "Error! Incorrect input of wisdom type. Please check input file." << endl;
+			return 0;
+		}
+
+		// Переводим строку в int 
+		int mark = atoi(str);
+
+		ifst.get(tmp);
+		wd->mark = mark;
+
+		switch (wd_type) 
 		{
 		case 1:
 			wd->k = wisdom::key::PROVERB;
-			In(wd->pr, ifst);
+			if (In(wd->pr, ifst) == 1)
+			{
+				return 0;
+			}
 			return wd;
 		case 2:
 			wd->k = wisdom::key::APHORISM;
-			In(wd->aph, ifst);
+			if (In(wd->aph, ifst) == 1)
+			{
+				return 0;
+			}
 			return wd;
 		case 3:
 			wd->k = wisdom::key::RIDDLE;
-			In(wd->rd, ifst);
+			if (In(wd->rd, ifst) == 1)
+			{
+				return 0;
+			}
 			return wd;
 		default:
 			return 0;

@@ -12,7 +12,7 @@ namespace simple_wisdom
 	// Сигнатуры требуемых внешних функций
 	void Init(container& c);
 	void Clear(container& c);
-	void In(container& c, ifstream& ifst);
+	int In(container& c, ifstream& ifst);
 	void Out(container& c, ofstream& ofst);
 	void Out_proverb(container& c, ofstream& ofst);
 	void Sort(container& c);
@@ -25,16 +25,19 @@ int main(int argc, char* argv[])
 	setlocale(LC_ALL, "rus");
 
 	if (argc != 3) {
-		cout << "incorrect command line! "
-			"Waited: command infile outfile" << endl;
-		exit(1);
+		cout << "incorrect command line! " "Waited: command infile outfile" << endl;
+		system("pause");
+		return 0;
 	}
 	ifstream ifst(argv[1]);
 	ofstream ofst(argv[2]);
 	cout << "Начало выполнения программы" << endl;
 	container c;
 	Init(c);
-	In(c, ifst);
+	if (int check = In(c, ifst) == 1)
+	{
+		return 0;
+	}
 	ofst << "Контейнер заполнен" << endl << endl;
 	cout << "Контейнер заполнен" << endl << endl;
 	ofst << "Стандартный вывод" << endl << endl;
