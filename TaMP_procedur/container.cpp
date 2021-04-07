@@ -57,53 +57,91 @@ namespace simple_wisdom {
 		}
 	}
 
-	void Write_pairs(container& c)
+	void Write_pairs(container& c, ofstream& ofst)
 	{
+		ofst << endl << "MultiMethod" << endl << endl;
+
 		for (int i = 0; i < c.len - 1; i++)
 		{
 			if (c.cont[i]->k == wisdom::key::PROVERB && c.cont[i + 1]->k == wisdom::key::PROVERB)
 			{
-				cout << i << " Операция: Пословица и Пословица" << endl;
+				Out(*(c.cont[i]), ofst);
+				ofst << endl;
+				Out(*(c.cont[i + 1]), ofst);
+				ofst << endl;
+				ofst << "Пословица и Пословица" << endl << endl;
 			}
 
 			if (c.cont[i]->k == wisdom::key::PROVERB && c.cont[i + 1]->k == wisdom::key::APHORISM)
 			{
-				cout << i << " Операция: Пословица и Афоризм" << endl;
+				Out(*(c.cont[i]), ofst);
+				ofst << endl;
+				Out(*(c.cont[i + 1]), ofst);
+				ofst << endl;
+				ofst << "Пословица и Афоризм" << endl << endl;
 			}
 
 			if (c.cont[i]->k == wisdom::key::PROVERB && c.cont[i + 1]->k == wisdom::key::RIDDLE)
 			{
-				cout << i << " Операция: Пословица и Загадка" << endl;
+				Out(*(c.cont[i]), ofst);
+				ofst << endl;
+				Out(*(c.cont[i + 1]), ofst);
+				ofst << endl;
+				ofst << "Пословица и Загадка" << endl << endl;
 			}
 
 			if (c.cont[i]->k == wisdom::key::APHORISM && c.cont[i + 1]->k == wisdom::key::APHORISM)
 			{
-				cout << i << " Операция: Афоризм и Афоризм" << endl;
+				Out(*(c.cont[i]), ofst);
+				ofst << endl;
+				Out(*(c.cont[i + 1]), ofst);
+				ofst << endl;
+				ofst << "Афоризм и Афоризм" << endl << endl;
 			}
 
 			if (c.cont[i]->k == wisdom::key::APHORISM && c.cont[i + 1]->k == wisdom::key::PROVERB)
 			{
-				cout << i << " Операция: Афоризм и Пословица" << endl;
+				Out(*(c.cont[i]), ofst);
+				ofst << endl;
+				Out(*(c.cont[i + 1]), ofst);
+				ofst << endl;
+				ofst << "Афоризм и Пословица" << endl << endl;
 			}
 
 			if (c.cont[i]->k == wisdom::key::APHORISM && c.cont[i + 1]->k == wisdom::key::RIDDLE)
 			{
-				cout << i << " Операция: Афоризм и Загадка" << endl;
+				Out(*(c.cont[i]), ofst);
+				ofst << endl;
+				Out(*(c.cont[i + 1]), ofst);
+				ofst << endl;
+				ofst << "Афоризм и Загадка" << endl << endl;
 			}
 
 			if (c.cont[i]->k == wisdom::key::RIDDLE && c.cont[i + 1]->k == wisdom::key::RIDDLE)
 			{
-				cout << i << " Операция: Загадка и Загадка" << endl;
+				Out(*(c.cont[i]), ofst);
+				ofst << endl;
+				Out(*(c.cont[i + 1]), ofst);
+				ofst << endl;
+				ofst << "Загадка и Загадка" << endl << endl;
 			}
 
 			if (c.cont[i]->k == wisdom::key::RIDDLE && c.cont[i + 1]->k == wisdom::key::PROVERB)
 			{
-				cout << i << " Операция: Загадка и Пословица" << endl;
+				Out(*(c.cont[i]), ofst);
+				ofst << endl;
+				Out(*(c.cont[i + 1]), ofst);
+				ofst << endl;
+				ofst << "Загадка и Пословица" << endl << endl;
 			}
 
 			if (c.cont[i]->k == wisdom::key::RIDDLE && c.cont[i + 1]->k == wisdom::key::APHORISM)
 			{
-				cout << i << " Операция: Загадка и Афоризм" << endl;
+				Out(*(c.cont[i]), ofst);
+				ofst << endl;
+				Out(*(c.cont[i + 1]), ofst);
+				ofst << endl;
+				ofst << "Загадка и Афоризм" << endl << endl;
 			}
 		}
 	}

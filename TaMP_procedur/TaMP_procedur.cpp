@@ -12,7 +12,7 @@ namespace simple_wisdom {
 	void Clear(container& c);
 	void In(container& c, ifstream& ifst);
 	void Out(container& c, ofstream& ofst);
-	void Write_pairs(container& c);
+	void Write_pairs(container& c, ofstream& ofst);
 }
 
 using namespace simple_wisdom;
@@ -33,7 +33,7 @@ int main(int argc, char* argv[])
 	ofst << "Контейнер заполнен" << endl << endl;
 	cout << "Контейнер заполнен" << endl << endl;
 	Out(c, ofst);
-	Write_pairs(c);
+	Write_pairs(c, ofst);
 	Clear(c);
 	ofst << endl << "Контейнер пуст" << endl << endl;
 	cout << "Контейнер пуст" << endl << endl;
