@@ -61,14 +61,24 @@ namespace simple_wisdom {
 	{
 		for (int i = 0; i < c.len - 1; i++)
 		{
+			if (c.cont[i]->k == wisdom::key::PROVERB && c.cont[i + 1]->k == wisdom::key::PROVERB)
+			{
+				cout << i << " Операция: Пословица и Пословица" << endl;
+			}
+
 			if (c.cont[i]->k == wisdom::key::PROVERB && c.cont[i + 1]->k == wisdom::key::APHORISM)
 			{
 				cout << i << " Операция: Пословица и Афоризм" << endl;
 			}
 
-			if (c.cont[i]->k == wisdom::key::PROVERB && c.cont[i + 1]->k == wisdom::key::PROVERB)
+			if (c.cont[i]->k == wisdom::key::PROVERB && c.cont[i + 1]->k == wisdom::key::RIDDLE)
 			{
-				cout << i << " Операция: Пословица и Пословица" << endl;
+				cout << i << " Операция: Пословица и Загадка" << endl;
+			}
+
+			if (c.cont[i]->k == wisdom::key::APHORISM && c.cont[i + 1]->k == wisdom::key::APHORISM)
+			{
+				cout << i << " Операция: Афоризм и Афоризм" << endl;
 			}
 
 			if (c.cont[i]->k == wisdom::key::APHORISM && c.cont[i + 1]->k == wisdom::key::PROVERB)
@@ -76,9 +86,24 @@ namespace simple_wisdom {
 				cout << i << " Операция: Афоризм и Пословица" << endl;
 			}
 
-			if (c.cont[i]->k == wisdom::key::APHORISM && c.cont[i + 1]->k == wisdom::key::APHORISM)
+			if (c.cont[i]->k == wisdom::key::APHORISM && c.cont[i + 1]->k == wisdom::key::RIDDLE)
 			{
-				cout << i << " Операция: Афоризм и Афоризм" << endl;
+				cout << i << " Операция: Афоризм и Загадка" << endl;
+			}
+
+			if (c.cont[i]->k == wisdom::key::RIDDLE && c.cont[i + 1]->k == wisdom::key::RIDDLE)
+			{
+				cout << i << " Операция: Загадка и Загадка" << endl;
+			}
+
+			if (c.cont[i]->k == wisdom::key::RIDDLE && c.cont[i + 1]->k == wisdom::key::PROVERB)
+			{
+				cout << i << " Операция: Загадка и Пословица" << endl;
+			}
+
+			if (c.cont[i]->k == wisdom::key::RIDDLE && c.cont[i + 1]->k == wisdom::key::APHORISM)
+			{
+				cout << i << " Операция: Загадка и Афоризм" << endl;
 			}
 		}
 	}

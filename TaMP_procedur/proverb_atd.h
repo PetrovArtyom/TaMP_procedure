@@ -4,7 +4,6 @@ namespace simple_wisdom {
 	// пословица
 	struct proverb
 	{
-		//char content[200];       // Содержание
 		char country[50];        // Страна 
 	};
 }

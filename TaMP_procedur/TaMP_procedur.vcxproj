@@ -154,6 +154,7 @@
     <ClCompile Include="aphorism.cpp" />
     <ClCompile Include="container.cpp" />
     <ClCompile Include="proverb.cpp" />
+    <ClCompile Include="riddle.cpp" />
     <ClCompile Include="TaMP_procedur.cpp" />
     <ClCompile Include="wisdom.cpp" />
   </ItemGroup>
@@ -161,6 +162,7 @@
     <ClInclude Include="aphorism_atd.h" />
     <ClInclude Include="container_atd.h" />
     <ClInclude Include="proverb_atd.h" />
+    <ClInclude Include="riddle_atd.h" />
     <ClInclude Include="wisdom_atd.h" />
   </ItemGroup>
   <ItemGroup>
