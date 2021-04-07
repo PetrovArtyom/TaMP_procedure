@@ -5,20 +5,27 @@
 #include "proverb_atd.h"
 #include "aphorism_atd.h"
 #include "riddle_atd.h"
+
 namespace simple_wisdom 
 {
-	// структура, обобщающая все имеющиеся фразы
+	// Структура, обобщающая все имеющиеся фразы
 	struct wisdom
 	{
-		char content[200];       // Содержание
-		int mark = 0;            // Субъективная оценка
+		// Строка для хранения содержания мудрости
+		char content[200]; 
 
-		// значения ключей для каждой из фразы
+		// Переменная для хранения субъективной оценки
+		int mark = 0;            
+
+		// Значения ключей для каждой мудрости
 		enum key { PROVERB, APHORISM, RIDDLE};
-		key k; // ключ
-		// используемые альтернативы
+
+		// Переменная, являющаяся ключом
+		key k; 
+
+		// Используемые альтернативы
 		union
-		{ // используем включение
+		{ 
 			proverb pr;
 			aphorism aph;
 			riddle rd;

@@ -1,6 +1,7 @@
 #include <fstream>
 #include <iostream>
 #include "wisdom_atd.h"
+
 using namespace std;
 namespace simple_wisdom 
 {
@@ -8,18 +9,21 @@ namespace simple_wisdom
 	int In(proverb& pr, ifstream& ist);
 	int In(aphorism& aph, ifstream& ist);
 	int In(riddle& rd, ifstream& ist);
+	void Out(proverb& pr, ofstream& ofst);
+	void Out(aphorism& aph, ofstream& ofst);
+	void Out(riddle& rd, ofstream& ofst);
 
-	// Ввод параметров обобщенной мудрости из файла
+	// Ввод параметров обобщенной мудрости из потока
 	wisdom* In(ifstream& ifst)
 	{
-		// Считывание вида мудрости
+		// Считывание типа мудрости
 		char k;
 		ifst >> k;
 
 		// Проверка символа на принадлежность к цифрам
 		if ((int)k > 57 || (int)k < 48)			
 		{
-			cout << endl << "Error! Incorrect input of wisdom type. Please check input file." << endl;
+			cout << endl << "Error! Not a number entered in an integer field. Please check input file." << endl;
 			return 0;
 		}
 
@@ -37,7 +41,7 @@ namespace simple_wisdom
 		//Проверка непустоты строки
 		if (wd->content[0] == '\0')
 		{
-			cout << endl << "Error! Incorrect input of wisdom type. Please check input file." << endl;
+			cout << endl << "Error! Field content is empty. Please check input file." << endl;
 			return 0;
 		}
 
@@ -51,7 +55,7 @@ namespace simple_wisdom
 		{
 			if ((int)str[count] > 57 || (int)str[count] < 48)
 			{
-				cout << endl << "Error! Incorrect input of wisdom type. Please check input file." << endl;
+				cout << endl << "Error! Not a number entered in an integer field. Please check input file." << endl;
 				return 0;
 			}
 			count++;
@@ -60,20 +64,23 @@ namespace simple_wisdom
 		// Проверка на невведение второго общего параметра - оценки
 		if (count == 0)
 		{
-			cout << endl << "Error! Incorrect input of wisdom type. Please check input file." << endl;
+			cout << endl << "Error! Field mark is empty. Please check input file." << endl;
 			return 0;
 		}
 
-		// Переводим строку в int 
+		// Конвертация строки в число 
 		int mark = atoi(str);
 
-		ifst.get(tmp);
+		// Запись проверенной оценки в соответствующее поле объекта
 		wd->mark = mark;
 
+		// Создание объекта соответствующего типа
 		switch (wd_type) 
 		{
 		case 1:
 			wd->k = wisdom::key::PROVERB;
+			
+			// Проверка успешности ввода индивидуального параметра
 			if (In(wd->pr, ifst) == 1)
 			{
 				return 0;
@@ -81,6 +88,8 @@ namespace simple_wisdom
 			return wd;
 		case 2:
 			wd->k = wisdom::key::APHORISM;
+			
+			// Проверка успешности ввода индивидуального параметра
 			if (In(wd->aph, ifst) == 1)
 			{
 				return 0;
@@ -88,6 +97,8 @@ namespace simple_wisdom
 			return wd;
 		case 3:
 			wd->k = wisdom::key::RIDDLE;
+			
+			// Проверка успешности ввода индивидуального параметра
 			if (In(wd->rd, ifst) == 1)
 			{
 				return 0;
@@ -98,12 +109,19 @@ namespace simple_wisdom
 		}
 	}
 
-	int marks_number(wisdom w)         //   Вычисление количества знаков препинания
+	//   Вычисление количества знаков препинания
+	int Marks_number(wisdom w)         
 	{
+		// Число знаков препинания
 		int marks_num = 0;
+		
+		// Учитываемые знаки
 		char marks[] = { '.', ',', '!', '?', '-', ';', ':' };
+	
+		// Длина массива учитываемых знаков
 		int marks_len = 7;
 
+		// Цикл подсчёта
 		for (int i = 0; i < strlen(w.content); i++)
 		{
 			for (int j = 0; j < 7; j++)
@@ -118,16 +136,9 @@ namespace simple_wisdom
 		return marks_num;
 	}
 
-	// Сигнатуры требуемых внешних функций.
-	void Out(proverb& pr, ofstream& ofst);
-	void Out(aphorism& aph, ofstream& ofst);
-	void Out(riddle& rd, ofstream& ofst);
-
 	// Вывод параметров текущей мудрости в поток
 	void Out(wisdom& wd, ofstream& ofst)
 	{
-		int marks_num = marks_number(wd);
-
 		// Вывод индивидуальных параметров
 		switch (wd.k)
 		{
@@ -146,14 +157,12 @@ namespace simple_wisdom
 
 		// Вывод общих параметров
 		ofst << wd.content << endl << "Оценка: " << wd.mark << endl;
-		ofst << "Знаков препинания: " << marks_num << endl << endl;
+		ofst << "Знаков препинания: " << Marks_number(wd) << endl << endl;
 	}
 
 	// Фильтрованный вывод параметров текущей мудрости в поток
 	void Out_proverb(wisdom& wd, ofstream& ofst)
 	{
-		int marks_num = marks_number(wd);
-
 		// Вывод индивидуальных параметров
 		switch (wd.k)
 		{
@@ -172,12 +181,13 @@ namespace simple_wisdom
 		if (wd.k == wisdom::key::PROVERB)
 		{
 			ofst << wd.content << endl << "Оценка: " << wd.mark << endl;
-			ofst << "Знаков препинания: " << marks_num << endl << endl;
+			ofst << "Знаков препинания: " << Marks_number(wd) << endl << endl;
 		}
 	}
 
-	bool compare(wisdom a, wisdom b)
+	// Сравнение полей "оценка" двух объектов
+	bool Compare(wisdom a, wisdom b)
 	{
-		return marks_number(a) > marks_number(b);
+		return Marks_number(a) > Marks_number(b);
 	}
 }

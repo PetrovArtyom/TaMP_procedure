@@ -1,11 +1,13 @@
 #ifndef __riddle_atd__
 #define __riddle_atd__
+
 namespace simple_wisdom 
 {
-	// загадка
+	// Определение структуры загадки
 	struct riddle
 	{
-		char answer[50];        // Ответ
+		// Строка для хранения ответа
+		char answer[50];        
 	};
 }
 #endif

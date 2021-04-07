@@ -1,22 +1,26 @@
 #include <fstream>
 #include <iostream>
 #include "riddle_atd.h"
+
 using namespace std;
 namespace simple_wisdom 
 {
-	// Ввод параметров загадки из файла
+	// Ввод параметров загадки из потока
 	int In(riddle& rd, ifstream& ifst)
 	{
+		// Чтение строки
 		ifst.getline(rd.answer, 50);
+		
+		// Проверка строки на непустоту
 		if (rd.answer[0] == '\0')
 		{
-			cout << endl << "Error! Incorrect input of wisdom type. Please check input file." << endl;
+			cout << endl << "Error! Field answer is empty. Please check input file." << endl;
 			return 1;
 		}
 		return 0;
 	}
 
-	// Вывод параметров пословицы в поток
+	// Вывод параметров загадки в поток
 	void Out(riddle& rd, ofstream& ofst)
 	{
 		ofst << "Ответ: " << rd.answer << endl << "Загадка: ";

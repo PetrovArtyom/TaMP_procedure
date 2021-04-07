@@ -1,11 +1,13 @@
 #ifndef __proverb_atd__
 #define __proverb_atd__
-namespace simple_wisdom {
-	// пословица
+
+namespace simple_wisdom 
+{
+	// Определение структуры пословицы
 	struct proverb
 	{
-		//char content[200];       // Содержание
-		char country[50];        // Страна 
+		// Строка для хранения страны
+		char country[50];         
 	};
 }
 #endif

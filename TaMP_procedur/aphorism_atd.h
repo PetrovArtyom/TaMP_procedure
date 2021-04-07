@@ -1,11 +1,13 @@
 #ifndef __aphorism_atd__
 #define __aphorism_atd__
-namespace simple_wisdom {
-	// афоризм
+
+namespace simple_wisdom 
+{
+	// Определение структуры афоризма
 	struct aphorism
 	{
-		//char content[200];       // Содержание
-		char author[50];         // Автор 
+		// Строка для хранения автора
+		char author[50];          
 	};
 }
 #endif
