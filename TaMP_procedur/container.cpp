@@ -56,4 +56,30 @@ namespace simple_wisdom {
 			Out(*(c.cont[i]), ofst);
 		}
 	}
+
+	void Write_pairs(container& c)
+	{
+		for (int i = 0; i < c.len - 1; i++)
+		{
+			if (c.cont[i]->k == wisdom::key::PROVERB && c.cont[i + 1]->k == wisdom::key::APHORISM)
+			{
+				cout << i << " Операция: Пословица и Афоризм" << endl;
+			}
+
+			if (c.cont[i]->k == wisdom::key::PROVERB && c.cont[i + 1]->k == wisdom::key::PROVERB)
+			{
+				cout << i << " Операция: Пословица и Пословица" << endl;
+			}
+
+			if (c.cont[i]->k == wisdom::key::APHORISM && c.cont[i + 1]->k == wisdom::key::PROVERB)
+			{
+				cout << i << " Операция: Афоризм и Пословица" << endl;
+			}
+
+			if (c.cont[i]->k == wisdom::key::APHORISM && c.cont[i + 1]->k == wisdom::key::APHORISM)
+			{
+				cout << i << " Операция: Афоризм и Афоризм" << endl;
+			}
+		}
+	}
 }

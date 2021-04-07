@@ -163,6 +163,10 @@
     <ClInclude Include="proverb_atd.h" />
     <ClInclude Include="wisdom_atd.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="in.txt" />
+    <Text Include="out.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
