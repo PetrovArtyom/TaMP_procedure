@@ -20,8 +20,7 @@ int main(int argc, char* argv[])
 	setlocale(LC_ALL, "rus");
 
 	if (argc != 3) {
-		cout << "incorrect command line! "
-			"Waited: command infile outfile" << endl;
+		cout << "incorrect command line! " << "Waited: command infile outfile" << endl;
 		exit(1);
 	}
 	ifstream ifst(argv[1]);
